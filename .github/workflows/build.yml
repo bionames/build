@@ -19,8 +19,11 @@ jobs:
         with:
           python-version: 3.9
       - name: Install dependencies
-        run: pip install git+https://github.com/pyobo/pyobo.git
+        run: |
+          pip install --upgrade pip
+          pip install wheel
+          pip install git+https://github.com/pyobo/pyobo.git
       - name: PyOBO Version
         run: pyobo --version
       - name: Build
-        run: pyobo database names
+        run: pyobo database names --no-strict
